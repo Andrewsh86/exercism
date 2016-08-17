@@ -8,7 +8,6 @@ class Raindrops
                     5 => 'Plang',
                     7 => 'Plong'}
 
-
   def self.convert number
     answer = ''
     @@conversions.keys.each do |factor|
