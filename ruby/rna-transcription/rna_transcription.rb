@@ -4,13 +4,14 @@ end
 
 class Complement
 
+  @@dictionary = {'A' => 'U',
+                'G' => 'C',
+                'T' => 'A',
+                'C' => 'G'}
+
   def self.transcribe nucleotide
-    dictionary = {'A' => 'U',
-                  'G' => 'C',
-                  'T' => 'A',
-                  'C' => 'G'}
     nucleotide.upcase!
-    dictionary[nucleotide]
+    @@dictionary[nucleotide]
   end
 
   def self.of_dna strand
