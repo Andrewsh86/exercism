@@ -5,9 +5,9 @@ end
 class Pangram
 
   def self.is_pangram? str
-    down_cased = str.downcase.chars.uniq.sort.join
+    unique_sorted_chars = str.downcase.chars.uniq.sort.join
     alphabet = ('a'..'z').to_a.join
-    result = down_cased =~ /#{alphabet}/
+    result = unique_sorted_chars =~ /#{alphabet}/
     !result.nil?
   end
 
