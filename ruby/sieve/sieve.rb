@@ -9,8 +9,8 @@ class Sieve
   end
 
   def primes
-    return [] if num < 2
-    list = (2..num).to_a
+    return [] if @num < 2
+    list = (2..@num).to_a
     prime_arr = []
     until list.empty? do
       prime_arr << list.shift
