@@ -1,8 +1,4 @@
-require 'pry'
-
 class Sieve
-
-  attr_reader :num
 
   def initialize num
     @num = num
