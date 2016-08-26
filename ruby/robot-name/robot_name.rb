@@ -11,11 +11,11 @@ class Robot
   end
 
   def reset
-    Kernel.srand
     @name = ''
     alphabet = ('A'..'Z').to_a
-    2.times {@name << alphabet[rand(26)]}
-    3.times {@name << rand(10).to_s}
+    nums = ('0'..'9').to_a
+    2.times {@name << alphabet.sample}
+    3.times {@name << nums.sample}
     if(@@names.find_index(@name))
       reset
     else
