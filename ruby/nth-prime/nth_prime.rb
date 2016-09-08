@@ -2,30 +2,26 @@ class Prime
 
   def self.nth n
     raise ArgumentError if n < 1
-    nums = (2..1000).to_a
-    mark = nums.last
-    primes = []
     until primes.size == n do
-      if nums.empty?
-        nums = (mark..mark + 1000).to_a
-        mark = nums.last
-        nums.map! do |x|
-          primes.any? do |prime|
-            (x % prime).zero?
-          end ? nil : x
-        end
-        nums.compact!
-      end
-
-      primes << nums.shift
-      nums.map! do |x|
-        (x % primes.last).zero? ? nil : x
-      end
-      nums.compact!
+      primes << next_candidate if is_prime? next_candidate
+      @next_candidate += 2
     end
-
     primes.last
   end
 
+  def self.primes
+    @primes ||= [2]
+  end
+
+  def self.next_candidate
+    @next_candidate ||= 3
+  end
+
+  def self.is_prime? num
+    primes.any? do |prime|
+      return false if (num % prime).zero?
+    end
+    return true
+  end
 
 end
