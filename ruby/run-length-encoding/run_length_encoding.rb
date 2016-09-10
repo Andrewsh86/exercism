@@ -9,7 +9,7 @@ class RunLengthEncoding
   end
 
   def self.decode input
-    chunks = input.scan(/(?:\d*)./)
+    chunks = input.scan(/\d*./)
     output = ''
     chunks.each do |chunk|
       count = chunk.scan(/\d+/).first
