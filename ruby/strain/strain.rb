@@ -2,17 +2,13 @@ class Array
 
   def keep
     result = []
-    self.each do |element|
-      result << element if yield element
-    end
+    each { |element| result << element if yield element }
     result
   end
 
   def discard
     result = []
-    self.each do |element|
-      result << element unless yield element
-    end
+    each { |element| result << element unless yield element }
     result
   end
 
