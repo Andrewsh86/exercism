@@ -1,63 +1,35 @@
 class Bst
   VERSION = 1
-  class Node
-    attr_reader :data
-    attr_reader :left
-    attr_reader :right
 
-    def initialize value
-      @data = value
-      @left = nil
-      @right = nil
-    end
+  attr_reader :data
 
-    def insert value
-      if @data.nil?
-        @data = value
-      elsif value <= @data
-        @left.nil? ? @left = Node.new(value) : @left.insert(value)
-      else
-        @right.nil? ? @right = Node.new(value) : @right.insert(value)
-      end
-    end
-
-    def each
-      yield @left.data if @left
-      yield @data
-      yield @right.data if @right
-    end
-
-
-  end
-
-
-
-  def initialize value
-    @root = Node.new(value)
-  end
-
-  def data
-    @root.data
+  def initialize(value=nil)
+    @data = value
   end
 
   def left
-    @root.left
+    @left ||= Bst.new
   end
 
   def right
-    @root.right
+    @right ||= Bst.new
   end
 
   def insert value
-    @root.insert value
+    if data.nil?
+      @data = value
+    elsif value <= data
+      left.insert(value)
+    else
+      right.insert(value)
+    end
   end
 
   def each &block
-    #cannot get last test to pass.
-    #submitting to get idea of how to solve.
-    left.each &block if left
-    yield data
-    right.each &block if right
+    return enum_for(:each) unless block_given?
+    left.each &block if @left
+    yield @data
+    right.each &block if @right
   end
 
 end
