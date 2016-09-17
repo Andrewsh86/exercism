@@ -25,15 +25,13 @@ CHEM_MAP =   {
   end
 
   def self.of_rna rna
-    chems = []
     codons = rna.chars.each_slice(3).map(&:join)
     raise InvalidCodonError unless codons.all? { |codon| CHEM_MAP[codon]}
-    codons.each do |codon|
+    codons.inject([]) do |chems, codon|
       chem = of_codon(codon)
-      break if chem == 'STOP'
+      return chems if chem == 'STOP'
       chems << chem
     end
-    chems
   end
 
 end
