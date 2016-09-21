@@ -18,8 +18,8 @@ class PerfectNumber
         factors << candidate
         factors << (n / candidate) unless candidate == 1
       end
-      factors.uniq
-    end
+      factors
+    end.uniq
   end
 
 end
