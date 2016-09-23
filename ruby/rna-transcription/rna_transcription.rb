@@ -10,8 +10,7 @@ class Complement
                 'C' => 'G'}
 
   def self.transcribe nucleotide
-    nucleotide.upcase!
-    @@dictionary[nucleotide]
+    @@dictionary[nucleotide.upcase]
   end
 
   def self.of_dna strand
