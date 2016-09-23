@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-require 'pry'
 gem 'minitest', '>= 5.0.0'
 require 'minitest/autorun'
 require_relative 'clock'
@@ -161,91 +160,78 @@ class ClockTest < Minitest::Test
   end
 
   def test_clocks_an_hour_apart
-    skip
     clock1 = Clock.at(14, 37)
     clock2 = Clock.at(15, 37)
     refute clock1 == clock2
   end
 
   def test_clocks_with_hour_overflow
-    skip
     clock1 = Clock.at(10, 37)
     clock2 = Clock.at(34, 37)
     assert clock1 == clock2
   end
 
   def test_clocks_with_hour_overflow_by_several_days
-    skip
     clock1 = Clock.at(3, 11)
     clock2 = Clock.at(99, 11)
     assert clock1 == clock2
   end
 
   def test_clocks_with_negative_hour
-    skip
     clock1 = Clock.at(22, 40)
     clock2 = Clock.at(-2, 40)
     assert clock1 == clock2
   end
 
   def test_clocks_with_negative_hour_that_wraps
-    skip
     clock1 = Clock.at(17, 3)
     clock2 = Clock.at(-31, 3)
     assert clock1 == clock2
   end
 
   def test_clocks_with_negative_hour_that_wraps_multiple_times
-    skip
     clock1 = Clock.at(13, 49)
     clock2 = Clock.at(-83, 49)
     assert clock1 == clock2
   end
 
   def test_clocks_with_minute_overflow
-    skip
     clock1 = Clock.at(0, 1)
     clock2 = Clock.at(0, 1441)
     assert clock1 == clock2
   end
 
   def test_clocks_with_minute_overflow_by_several_days
-    skip
     clock1 = Clock.at(2, 2)
     clock2 = Clock.at(2, 4322)
     assert clock1 == clock2
   end
 
   def test_clocks_with_negative_minute
-    skip
     clock1 = Clock.at(2, 40)
     clock2 = Clock.at(3, -20)
     assert clock1 == clock2
   end
 
   def test_clocks_with_negative_minute_that_wraps
-    skip
     clock1 = Clock.at(4, 10)
     clock2 = Clock.at(5, -1490)
     assert clock1 == clock2
   end
 
   def test_clocks_with_negative_minute_that_wraps_multiple_times
-    skip
     clock1 = Clock.at(6, 15)
     clock2 = Clock.at(6, -4305)
     assert clock1 == clock2
   end
 
   def test_clocks_with_negative_hours_and_minutes
-    skip
     clock1 = Clock.at(7, 32)
     clock2 = Clock.at(-12, -268)
     assert clock1 == clock2
   end
 
   def test_clocks_with_negative_hours_and_minutes_that_wrap
-    skip
     clock1 = Clock.at(18, 7)
     clock2 = Clock.at(-54, -11_513)
     assert clock1 == clock2
@@ -268,7 +254,6 @@ class ClockTest < Minitest::Test
   # http://ruby-doc.org/docs/ruby-doc-bundle/UsersGuide/rg/constants.html
 
   def test_bookkeeping
-    skip
     assert_equal 2, BookKeeping::VERSION
   end
 end

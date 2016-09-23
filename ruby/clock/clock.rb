@@ -1,12 +1,16 @@
-require 'pry'
 class Clock
 
   attr_reader :hours, :minutes
 
-  def at hours, minutes
+  def self.at(hours, minutes)
+    new(hours, minutes)
+  end
+
+  def initialize(hours, minutes)
     hours_from_minutes = minutes / 60
     @hours = (hours + hours_from_minutes) % 24
     @minutes = minutes % 60
+    self
   end
 
   def to_s
@@ -18,13 +22,15 @@ class Clock
   end
 
   def + minutes
-    at @hours, @minutes + minutes
+    self.class.new(@hours, @minutes + minutes)
   end
 
   def == clock
     @hours == clock.hours && @minutes == clock.minutes
   end
 
-  alias_method 'new', 'at'
+end
 
+module BookKeeping
+  VERSION = 2
 end
