@@ -3,7 +3,7 @@ class CustomSet
 
   def initialize list
     @list = {}
-    list.each { |element| @list[element] = 1 }
+    list.each { |element| add(element) }
   end
 
   def empty?
