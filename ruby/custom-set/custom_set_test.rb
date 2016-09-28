@@ -240,6 +240,35 @@ class CustomSetTest < Minitest::Test
     assert_equal expected, set1.union(set2)
   end
 
+  def test_add_empty_list_does_not_change_set
+    set = CustomSet.new [1, 2, 3]
+    expected = CustomSet.new [1, 2, 3]
+    set.add_list []
+    assert_equal expected, set
+  end
+
+  def test_add_list_to_empty_set
+    set = CustomSet.new []
+    expected = CustomSet.new [1, 2, 3]
+    set.add_list [1, 2, 3]
+    assert_equal expected, set
+  end
+
+  def test_add_list_to_non_empty_set
+    set = CustomSet.new [1, 2, 3]
+    expected = CustomSet.new [1, 2, 3, 4, 5]
+    set.add_list [4, 5]
+    assert_equal expected, set
+  end
+
+  def test_add_list_with_set
+    set1 = CustomSet.new [1, 2, 3]
+    set2 = CustomSet.new [4, 5]
+    expected = CustomSet.new [1, 2, 3, 4, 5]
+    set1.add_list set2
+    assert_equal expected, set1
+  end
+
   # Problems in exercism evolve over time, as we find better ways to ask
   # questions.
   # The version number refers to the version of the problem you solved,

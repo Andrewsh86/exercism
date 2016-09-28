@@ -3,7 +3,7 @@ class CustomSet
 
   def initialize list
     @list = {}
-    list.each { |element| add(element) }
+    add_list list
   end
 
   def empty?
@@ -45,8 +45,12 @@ class CustomSet
 
   def union set
     union_set = self.dup
-    set.each { |element| union_set.add(element)}
-    union_set
+    union_set.add_list set
+  end
+
+  def add_list list
+    list.each { |element| add(element)}
+    self
   end
 
   def each &block
