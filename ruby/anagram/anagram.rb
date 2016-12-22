@@ -6,8 +6,7 @@ class Anagram
   end
 
   def match words
-    dup_words = words.dup
-    dup_words.select { |word| word.downcase != @word.downcase && word.downcase.chars.sort.join == @sorted_word}
+    words.select { |word| word.downcase != @word.downcase && word.downcase.chars.sort.join == @sorted_word}
   end
 
 end
